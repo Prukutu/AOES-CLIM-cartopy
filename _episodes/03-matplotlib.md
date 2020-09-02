@@ -1,7 +1,7 @@
 ---
 title: Visualizing Tabular Data
-teaching: 30
-exercises: 20
+teaching: 0
+exercises: 0
 questions:
 - "How can I visualize tabular data in Python?"
 - "How can I group several plots together?"
