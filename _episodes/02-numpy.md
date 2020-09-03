@@ -33,8 +33,8 @@ that can be called upon when needed.
 To begin processing inflammation data, we need to load it into Python.
 We can do that using a library called
 [NumPy](http://docs.scipy.org/doc/numpy/ "NumPy Documentation"), which stands for Numerical Python.
-In general, you should use this library when you want to do fancy things with lots of numbers,
-especially if you have matrices or arrays. To tell Python that we'd like to start using NumPy,
+In general, you should use this library when you want to do anything involving numbers,
+matrices or arrays.  To tell Python that we'd like to start using NumPy,
 we need to [import]({{ page.root }}/reference/#import) it:
 
 ~~~
@@ -72,17 +72,13 @@ belongs to the `numpy` library. This [dotted notation]({{ page.root }}/reference
 is used everywhere in Python: the thing that appears before the dot contains the thing that
 appears after.
 
-As an example, John Smith is the John that belongs to the Smith family.
-We could use the dot notation to write his name `smith.john`,
-just as `loadtxt` is a function that belongs to the `numpy` library.
-
 `numpy.loadtxt` has two [parameters]({{ page.root }}/reference/#parameter): the name of the file
 we want to read and the [delimiter]({{ page.root }}/reference/#delimiter) that separates values on
 a line. These both need to be character strings (or [strings]({{ page.root }}/reference/#string)
 for short), so we put them in quotes.
 
 Since we haven't told it to do anything else with the function's output,
-the [notebook]({{ page.root }}/reference/#notebook) displays it.
+Python just displays it.
 In this case,
 that output is the data we just loaded.
 By default,
@@ -242,8 +238,6 @@ It takes a bit of getting used to,
 but one way to remember the rule is that
 the index is how many steps we have to take from the start to get the item we want.
 
-![Zero Index](../fig/python-zero-index.png)
-
 > ## In the Corner
 >
 > What may also surprise you is that when Python displays an array,
@@ -380,21 +374,6 @@ minimum inflammation: 0.0
 standard deviation: 4.61383319712
 ~~~
 {: .output}
-
-> ## Mystery Functions in IPython
->
-> How did we know what functions NumPy has and how to use them?
-> If you are working in IPython or in a Jupyter Notebook, there is an easy way to find out.
-> If you type the name of something followed by a dot, then you can use tab completion
-> (e.g. type `numpy.` and then press <kbd>Tab</kbd>)
-> to see a list of all functions and attributes that you can use. After selecting one, you
-> can also add a question mark (e.g. `numpy.cumprod?`), and IPython will return an
-> explanation of the method! This is the same as doing `help(numpy.cumprod)`.
-> Similarly, if you are using the "plain vanilla" Python interpreter, you can type `numpy.`
-> and press the <kbd>Tab</kbd> key twice for a listing of what is available. You can then use the
-> `help()` function to see an explanation of the function you're interested in,
-> for example: `help(numpy.cumprod)`.
-{: .callout}
 
 When analyzing data, though,
 we often want to look at variations in statistical values,
@@ -570,232 +549,6 @@ which is the average inflammation per patient across all days.
 > > last three characters: hi
 > > ~~~
 > > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Thin Slices
->
-> The expression `element[3:3]` produces an [empty string]({{ page.root }}/reference/#empty-string),
-> i.e., a string that contains no characters.
-> If `data` holds our array of patient data,
-> what does `data[3:3, 4:4]` produce?
-> What about `data[3:3, :]`?
->
-> > ## Solution
-> > ~~~
-> > array([], shape=(0, 0), dtype=float64)
-> > array([], shape=(0, 40), dtype=float64)
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Stacking Arrays
->
-> Arrays can be concatenated and stacked on top of one another,
-> using NumPy's `vstack` and `hstack` functions for vertical and horizontal stacking, respectively.
->
-> ~~~
-> import numpy
->
-> A = numpy.array([[1,2,3], [4,5,6], [7, 8, 9]])
-> print('A = ')
-> print(A)
->
-> B = numpy.hstack([A, A])
-> print('B = ')
-> print(B)
->
-> C = numpy.vstack([A, A])
-> print('C = ')
-> print(C)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> A =
-> [[1 2 3]
->  [4 5 6]
->  [7 8 9]]
-> B =
-> [[1 2 3 1 2 3]
->  [4 5 6 4 5 6]
->  [7 8 9 7 8 9]]
-> C =
-> [[1 2 3]
->  [4 5 6]
->  [7 8 9]
->  [1 2 3]
->  [4 5 6]
->  [7 8 9]]
-> ~~~
-> {: .output}
->
-> Write some additional code that slices the first and last columns of `A`,
-> and stacks them into a 3x2 array.
-> Make sure to `print` the results to verify your solution.
->
-> > ## Solution
-> >
-> > A 'gotcha' with array indexing is that singleton dimensions
-> > are dropped by default. That means `A[:, 0]` is a one dimensional
-> > array, which won't stack as desired. To preserve singleton dimensions,
-> > the index itself can be a slice or array. For example, `A[:, :1]` returns
-> > a two dimensional array with one singleton dimension (i.e. a column
-> > vector).
-> >
-> > ~~~
-> > D = numpy.hstack((A[:, :1], A[:, -1:]))
-> > print('D = ')
-> > print(D)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > D =
-> > [[1 3]
-> >  [4 6]
-> >  [7 9]]
-> > ~~~
-> > {: .output}
-> {: .solution}
->
-> > ## Solution
-> >
-> > An alternative way to achieve the same result is to use Numpy's
-> > delete function to remove the second column of A.
-> >
-> > ~~~
-> > D = numpy.delete(A, 1, 1)
-> > print('D = ')
-> > print(D)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > D =
-> > [[1 3]
-> >  [4 6]
-> >  [7 9]]
-> > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
-
-> ## Change In Inflammation
->
-> The patient data is _longitudinal_ in the sense that each row represents a
-> series of observations relating to one individual.  This means that
-> the change in inflammation over time is a meaningful concept.
-> Let's find out how to calculate changes in the data contained in an array
-> with NumPy.
->
-> The `numpy.diff()` function takes an array and returns the differences
-> between two successive values. Let's use it to examine the changes
-> each day across the first week of patient 3 from our inflammation dataset.
-> 
-> ~~~
-> patient3_week1 = data[3, :7]
-> print(patient3_week1)
-> ~~~
-> {: .language-python}
->
-> ~~~
->  [0. 0. 2. 0. 4. 2. 2.]
-> ~~~
-> {: .output}
->
-> Calling `numpy.diff(patient3_week1)` would do the following calculations
->
-> ~~~
-> [ 0 - 0, 2 - 0, 0 - 2, 4 - 0, 2 - 4, 2 - 2 ]
-> ~~~
-> {: .language-python}
->
-> and return the 6 difference values in a new array.
->
-> ~~~
-> numpy.diff(patient3_week1)
-> ~~~
-> {: .language-python}
->
-> ~~~
-> array([ 0.,  2., -2.,  4., -2.,  0.])
-> ~~~
-> {: .output}
->
-> Note that the array of differences is shorter by one element (length 6).
->
-> When calling `numpy.diff` with a multi-dimensional array, an `axis` argument may
-> be passed to the function to specify which axis to process. When applying 
-> `numpy.diff` to our 2D inflammation array `data`, which axis would we specify?
->
-> > ## Solution
-> > Since the row axis (0) is patients, it does not make sense to get the
-> > difference between two arbitrary patients. The column axis (1) is in
-> > days, so the difference is the change in inflammation -- a meaningful
-> > concept.
-> >
-> > ~~~
-> > numpy.diff(data, axis=1)
-> > ~~~
-> > {: .language-python}
-> {: .solution}
->
-> If the shape of an individual data file is `(60, 40)` (60 rows and 40
-> columns), what would the shape of the array be after you run the `diff()`
-> function and why?
->
-> > ## Solution
-> > The shape will be `(60, 39)` because there is one fewer difference between
-> > columns than there are columns in the data.
-> {: .solution}
->
-> How would you find the largest change in inflammation for each patient? Does
-> it matter if the change in inflammation is an increase or a decrease?
->
-> > ## Solution
-> > By using the `numpy.max()` function after you apply the `numpy.diff()`
-> > function, you will get the largest difference between days.
-> >
-> > ~~~
-> > numpy.max(numpy.diff(data, axis=1), axis=1)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > array([  7.,  12.,  11.,  10.,  11.,  13.,  10.,   8.,  10.,  10.,   7.,
-> >          7.,  13.,   7.,  10.,  10.,   8.,  10.,   9.,  10.,  13.,   7.,
-> >         12.,   9.,  12.,  11.,  10.,  10.,   7.,  10.,  11.,  10.,   8.,
-> >         11.,  12.,  10.,   9.,  10.,  13.,  10.,   7.,   7.,  10.,  13.,
-> >         12.,   8.,   8.,  10.,  10.,   9.,   8.,  13.,  10.,   7.,  10.,
-> >          8.,  12.,  10.,   7.,  12.])
-> > ~~~
-> > {: .language-python}
-> >
-> > If inflammation values *decrease* along an axis, then the difference from
-> > one element to the next will be negative. If
-> > you are interested in the **magnitude** of the change and not the
-> > direction, the `numpy.absolute()` function will provide that.
-> >
-> > Notice the difference if you get the largest _absolute_ difference
-> > between readings.
-> >
-> > ~~~
-> > numpy.max(numpy.absolute(numpy.diff(data, axis=1)), axis=1)
-> > ~~~
-> > {: .language-python}
-> >
-> > ~~~
-> > array([ 12.,  14.,  11.,  13.,  11.,  13.,  10.,  12.,  10.,  10.,  10.,
-> >         12.,  13.,  10.,  11.,  10.,  12.,  13.,   9.,  10.,  13.,   9.,
-> >         12.,   9.,  12.,  11.,  10.,  13.,   9.,  13.,  11.,  11.,   8.,
-> >         11.,  12.,  13.,   9.,  10.,  13.,  11.,  11.,  13.,  11.,  13.,
-> >         13.,  10.,   9.,  10.,  10.,   9.,   9.,  13.,  10.,   9.,  10.,
-> >         11.,  13.,  10.,  10.,  12.])
-> > ~~~
-> > {: .language-python}
-> >
 > {: .solution}
 {: .challenge}
 
