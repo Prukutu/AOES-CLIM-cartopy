@@ -27,7 +27,7 @@ This creates a new notebook with a default title `Untitled.ipynb` or `Untitled#.
 
 Change the name of your notebook to `PracticeNotebook.ipynb` by clicking `File`->`Save Notebook As`  
 
-The rectangular box in your notebook is called a `cell` it contains a block of `code`, `Markdown`, or `Raw` text.  What a `cell` contains is indicated in te menu above. 
+The rectangular box in your notebook is called a `cell` it contains a block of `code`, `Markdown`, or `Raw` text.  What a `cell` contains is indicated in the menu above. 
 
 To determine what kind of `Code` a cell contains for a given notebook, the `kernel` is shown in the upper right.  This notebook contains `Python 3` code.
 
