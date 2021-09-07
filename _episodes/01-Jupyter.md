@@ -14,7 +14,7 @@ keypoints:
 
 ### JupyterLab (Jupyter Notebook)
 
-JupyterLab allows us to create Jupyter Notebooks which can contain a combination of code, figures, links, Formatted text, and latex LaTex equations.   
+JupyterLab allows us to create Jupyter Notebooks which can contain a combination of code, figures, links, formatted text, and LaTex equations.   
 
 It is also a web-based programming interface for mutiple languages (e.g. Python, R, Matlab).  We will use it as our Python programming interface.
 
@@ -33,7 +33,7 @@ To determine what kind of `Code` a cell contains for a given notebook, the `kern
 
 ## What is Markdown?
 
-Markdown is a formatting language that allows you to provide formatted text (e.g. bold, italics, links, different sized font, and LaTeX equations.
+Markdown is a formatting language that allows you to provide formatted text (e.g. bold, italics, links, different sized font, and LaTeX equations)
 
 As an example, let's type the following in a cell and change the cell to Markdown:
 > # CLIM 680 Practice Notebook
