@@ -18,11 +18,11 @@ JupyterLab allows us to create Jupyter Notebooks which can contain a combination
 
 It is also a web-based programming interface for mutiple languages (e.g. Python, R, Matlab).  We will use it as our Python programming interface.
 
-Because it also allows figures, links, test, and equations in addition to code, it is very useful for use in research allowing all your information related to your research to be kept together rather than in separate documents. 
+Because it also allows figures, links, text, and equations in addition to code, it is very useful for use in research allowing all your information related to your research to be kept together rather than in separate documents. 
 
 ### Creating and working with a Jupyter Notebook
 
-First, let's create a new Jupyter Notebook by clicking `File`->`New`->`Noteboo` or clicking on `Python 3`
+First, let's create a new Jupyter Notebook by clicking `File`->`New`->`Notebook` or clicking on `Python 3`
 This creates a new notebook with a default title `Untitled.ipynb` or `Untitled#.ipynb`. Note that Jupyter Notebooks end in `.ipynb`
 
 Change the name of your notebook to `PracticeNotebook.ipynb` by clicking `File`->`Save Notebook As`  
