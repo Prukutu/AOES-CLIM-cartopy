@@ -38,6 +38,7 @@ Markdown is a formatting language that allows you to provide basic formatted tex
 
 As an example, let's type the following in a cell and change the cell to Markdown:
 
+> ~~~
 > # CLIM 680 Practice Notebook
 > ## by {your name here}
 > #### for class
@@ -59,7 +60,7 @@ As an example, let's type the following in a cell and change the cell to Markdow
 > * something important
 > * something else important
 >   * A subset of something important
->
+> ~~~
 {: .source}
 
 Once you are finished, **run** the cell by either:
