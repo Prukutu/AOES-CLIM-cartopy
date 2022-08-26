@@ -68,7 +68,7 @@ Once you are finished, **run** the cell by either:
   
 Your result should look something like this once you run the cell:
 
-![markup cell example](../fig/markup_example.png)
+![markup cell example](../fig/markup_example.jpg)
   
 > ## What is LaTeX (and why do you type it like that)?
 >
