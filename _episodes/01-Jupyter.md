@@ -37,8 +37,9 @@ To determine what kind of **code** our notebook will contain and run, the **kern
 Markdown is a formatting language that allows you to provide basic formatted text (e.g. bold, italics, links, different sized font, and LaTeX equations). It's not as fancy as what you could do with a word processor, but for documenting projects in Jupyter notebooks, it gets the job done nicely!
 
 As an example, let's type the following in a cell and change the cell to Markdown:
+
 > # CLIM 680 Practice Notebook
-> ## by <your name here>
+> ## by {your name here}
 > #### for class
 >
 > ### We can insert `LaTeX` equations
@@ -58,8 +59,17 @@ As an example, let's type the following in a cell and change the cell to Markdow
 > * something important
 > * something else important
 >   * A subset of something important
+>
 {: .source}
 
+Once you are finished, **run** the cell by either:
+* Clicking the "play" button ▶ at the tab
+* Typing shift-return
+  
+Your result should look something like this once you run the cell:
+
+![markup cell example](../fig/markup_example.png)
+  
 > ## What is LaTeX (and why do you type it like that)?
 >
 > LaTeX (pronounced "lah-tek" or "lay-tek" but never "lay-teks")
