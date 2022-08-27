@@ -65,7 +65,7 @@ As an example, let's type the following in a cell and change the cell to Markdow
 
 Once you are finished, **run** the cell by either:
 
-* Clicking the "play" button ▶ at the tab
+* Clicking the "play" button ▶ at top of the tab
 
 * Typing shift-return
   
