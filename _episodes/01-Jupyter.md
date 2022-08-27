@@ -67,7 +67,7 @@ Once you are finished, **run** the cell by either:
 
 * Clicking the "play" button ▶ at top of the tab
 
-* Typing shift-return
+* Typing `shift-return`
   
 Your result should look something like this once you run the cell:
 
