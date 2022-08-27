@@ -64,7 +64,9 @@ As an example, let's type the following in a cell and change the cell to Markdow
 {: .source}
 
 Once you are finished, **run** the cell by either:
+
 * Clicking the "play" button ▶ at the tab
+
 * Typing shift-return
   
 Your result should look something like this once you run the cell:
