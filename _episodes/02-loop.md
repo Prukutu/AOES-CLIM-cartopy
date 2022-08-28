@@ -1,7 +1,7 @@
 ---
 title: Repeating Actions with Loops
-teaching: 30
-exercises: 0
+teaching: 25
+exercises: 5
 questions:
 - "How can I do the same operations on many different values?"
 objectives:
@@ -298,6 +298,7 @@ so we should always use it when we can.
 > ## Understanding the loops
 >
 > Given the following loop:
+> 
 > ~~~
 > word = 'oxygen'
 > for char in word:
