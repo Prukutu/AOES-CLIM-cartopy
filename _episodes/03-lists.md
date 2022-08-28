@@ -20,7 +20,7 @@ list[2:9]), in the same way as strings and arrays."
 - "Strings are immutable (i.e., the characters in them cannot be changed)."
 ---
 
-Similar to a string that can contain many characters, a list is a container that can store many values.
+Similar to a string that can contain many characters, a list is a container that can store many values, called **items**.
 Unlike NumPy arrays,
 lists are built into the language (so we don't have to load a library
 to use them).
@@ -37,28 +37,28 @@ odds are: [1, 3, 5, 7]
 ~~~
 {: .output}
 
-We can access elements of a list using indices -- numbered positions of elements in the list.
-These positions are numbered starting at 0, so the first element has an index of 0.
+We can access items of a list using indices -- numbered positions of items in the list.
+These positions are numbered starting at 0, so the first item has an index of 0.
 
 ~~~
-print('first element:', odds[0])
-print('last element:', odds[3])
-print('"-1" element:', odds[-1])
+print('first item:', odds[0])
+print('last item:', odds[3])
+print('"-1" item:', odds[-1])
 ~~~
 {: .language-python}
 
 ~~~
-first element: 1
-last element: 7
-"-1" element: 7
+first item: 1
+last item: 7
+"-1" item: 7
 ~~~
 {: .output}
 
 Yes, we can use negative numbers as indices in Python. When we do so, the index `-1` gives us the
-last element in the list, `-2` the second to last, and so on.
-Because of this, `odds[3]` and `odds[-1]` point to the same element here.
+last item in the list, `-2` the second to last, and so on.
+Because of this, `odds[3]` and `odds[-1]` point to the same item here.
 
-If we loop over a list, the loop variable is assigned to its elements one at a time:
+If we loop over a list, the loop variable is assigned to its items one at a time:
 
 ~~~
 for number in odds:
@@ -75,7 +75,7 @@ for number in odds:
 {: .output}
 
 There is one important difference between lists and strings:
-we can change the values in a list,
+we can change the items in a list,
 but we cannot change individual characters in a string.
 For example:
 
@@ -123,12 +123,12 @@ does not.
 > replace the old value with a completely new value.
 >
 > Lists and arrays, on the other hand, are mutable: we can modify them after they have been
-> created. We can change individual elements, append new elements, or reorder the whole list. For
+> created. We can change individual items, append new items, or reorder the whole list. For
 > some operations, like sorting, we can choose whether to use a function that modifies the data
 > in-place or a function that returns a modified copy and leaves the original unchanged.
 >
 > Be careful when modifying data in-place. If two variables refer to the same list, and you modify
-> the list value, it will change for both variables!
+> the list contents, it will change for both variables!
 >
 > ~~~
 > salsa = ['peppers', 'onions', 'cilantro', 'tomatoes']
@@ -144,7 +144,8 @@ does not.
 > {: .output}
 >
 > If you want variables with mutable values to be independent, you
-> must make a copy of the value when you assign it.
+> must make a copy of the list when you assign it. 
+> As this is Python, there are multiple ways to do this. For instance:
 >
 > ~~~
 > salsa = ['peppers', 'onions', 'cilantro', 'tomatoes']
@@ -158,7 +159,22 @@ does not.
 > Ingredients in my salsa: ['peppers', 'onions', 'cilantro', 'tomatoes']
 > ~~~
 > {: .output}
+> 
+> Alternatively, many objects including lists have a `copy` method:
 >
+> ~~~
+> salsa = ['peppers', 'onions', 'cilantro', 'tomatoes']
+> my_salsa = salsa.copy()        # <-- also makes a *copy* of the list
+> salsa[0] = 'hot peppers'
+> print('Ingredients in my salsa:', my_salsa)
+> ~~~
+> {: .language-python}
+>
+> ~~~
+> Ingredients in my salsa: ['peppers', 'onions', 'cilantro', 'tomatoes']
+> ~~~
+> {: .output}
+> >
 > Because of pitfalls like this, code which modifies data in place can be more difficult to
 > understand. However, it is often far more efficient to modify a large data structure in place
 > than to create a modified copy for every small change. You should consider both of these aspects
@@ -216,13 +232,16 @@ does not.
 > 'pepper'
 > ~~~
 > {: .output}
+> 
+> You may recogize that a list is like a series in mathematics, and a list of lists is like a 2-D array.
+> The analogy continues - a list of lists of lists is like a 3-D array, etc.
 >
 > Thanks to [Hadley Wickham][hadleywickham-tweet]
 > for the image above.
 {: .callout}
 
 > ## Heterogeneous Lists
-> Lists in Python can contain elements of different types. Example:
+> Lists in Python can contain items of different types. Example:
 > ~~~
 > sample_ages = [10, 12.5, 'Unknown']
 > ~~~
@@ -230,7 +249,7 @@ does not.
 {: .callout}
 
 There are many ways to change the contents of lists besides assigning new values to
-individual elements:
+individual items:
 
 ~~~
 odds.append(11)
@@ -288,7 +307,8 @@ odds: [1, 3, 5, 7, 2]
 {: .output}
 
 This is because Python stores a list in memory, and then can use multiple names to refer to the
-same list. If all we want to do is copy a (simple) list, we can again use the `list` function, so we do
+same list, the same location in memory. If all we want to do is copy a (simple) list, 
+we can again use the `list` function (or more generally, the `copy()` method), so we do
 not modify a list we did not mean to:
 
 ~~~
@@ -390,7 +410,8 @@ last: 4
 > Hint: Remember that indices can be negative as well as positive
 >
 > > ## Solution
-> > Use negative indices to count elements from the end of a container (such as list or string):
+> > Use negative indices to count elements from the end of a container 
+> > (such as items in a list or characters in a string):
 > >
 > > ~~~
 > > string_for_slicing[-4:]
@@ -407,7 +428,7 @@ last: 4
 > But what if we want to take a subset of entries
 > that aren't next to each other in the sequence?
 >
-> You can achieve this by providing a third argument
+> If the elements to be chosen are evenly spaced, you can achieve this by providing a third argument
 > to the range within the brackets, called the _step size_.
 > The example below shows how you can take every third entry in a list:
 >
@@ -479,7 +500,7 @@ last: 4
 > {: .solution}
 {: .challenge}
 
-If you want to take a slice from the beginning of a sequence, you can omit the first index in the
+If you want to take a slice from the beginning of a sequence, you can safely omit the first index in the
 range:
 
 ~~~
@@ -497,7 +518,7 @@ Omitting beginning index: Monday
 ~~~
 {: .output}
 
-And similarly, you can omit the ending index in the range to take a slice to the very end of the
+And similarly, you can safely omit the ending index in the range to take a slice to the very end of the
 sequence:
 
 ~~~
@@ -542,7 +563,7 @@ Omitting ending index: ['sep', 'oct', 'nov', 'dec']
 >
 > > ## Solution
 > >
-> > The multiplication operator `*` used on a list replicates elements of the list and concatenates
+> > The multiplication operator `*` used on a list replicates items of the list and concatenates
 > > them together:
 > >
 > > ~~~
