@@ -150,8 +150,8 @@ Using the oxygen example above, the loop might look like this:
 ![loop_image](../fig/loops_image.png)
 
 where each character (`char`) in the variable `word` is looped through and printed one character
-after another. The numbers in the diagram denote which loop cycle the character was printed in (1
-being the first loop, and 6 being the final loop).
+after another. The numbers in the diagram denote which character was printed (0
+being the first loop cycle, and 5 in the final or _sixth_ loop).
 
 We can call the [loop variable]({{ page.root }}/reference/#loop-variable) anything we like, but
 there must be a colon at the end of the line starting the loop, and we must indent anything we
