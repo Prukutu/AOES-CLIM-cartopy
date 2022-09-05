@@ -1,7 +1,7 @@
 ---
 title: "Making Maps with Cartopy"
 teaching: 50
-exercises: 10
+exercises: 0
 questions:
 - "How can I use Cartopy for Climate Data Analysis"
 objectives:
