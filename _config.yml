@@ -10,7 +10,7 @@
 carpentry: "swc"
 
 # Overall title for pages.
-title: "Using JupyterLab & Python Programming 2"
+title: "Making Maps Using Cartopy"
 
 # Kramdown
 kramdown:
