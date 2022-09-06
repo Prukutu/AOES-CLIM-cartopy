@@ -1,6 +1,6 @@
 ---
 title: "Making Maps with Cartopy"
-teaching: 50
+teaching: 60
 exercises: 0
 questions:
 - "How can I use Cartopy for Climate Data Analysis"
@@ -280,7 +280,7 @@ available.
 ![Screendump of plot with intuitive colors](../fig/examples_cartopy-tutorial_20_1.png)
 
 
-> ## Good code editing practices
+> ## Good code editing habits
 >
 > One of the most frustrating things that happens when writing code is when you have a program that works,
 > but you want to make an improvement.
