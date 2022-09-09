@@ -38,6 +38,7 @@ In a new Jupyter notebook (call it `cartopy_test.ipynb`) type into the code cell
 > 
 > import cartopy.crs as ccrs
 > import cartopy.mpl.ticker as cticker
+> import cartopy.feature as feature
 > from cartopy.util import add_cyclic_point
 > ~~~
 {: .source}
@@ -228,7 +229,46 @@ Let's use the Robinson projection. We'll also give the plot a title and label th
 > ~~~
 {: .source}
 
-![Screendump of plot with intuitive colors](../fig/examples_cartopy-tutorial_20_1.png)
+![Screendump of plot with pleasing map projection](../fig/examples_cartopy-tutorial_20_1.png)
+
+## Masking
+
+Cartopy includes landscape features that can be used to overlay our data plots.
+
+> ~~~
+> # Make the figure larger
+> fig = plt.figure(figsize=(11,8.5))
+> 
+> # Set the axes using the specified map projection
+> ax=plt.axes(projection=ccrs.Robinson())
+> 
+> # Add cyclic point to data
+> data=ds_mean['tas']
+> data, lons = add_cyclic_point(data, coord=ds['lon'])
+> 
+> # Make a filled contour plot
+> cs=ax.contourf(lons, ds['lat'], data,
+>             transform = ccrs.PlateCarree(),cmap='coolwarm',extend='both')
+>
+> # Mask out continents
+> ax.add_feature(feature.OCEAN, zorder=2, color='#1F2A38')
+> ax.add_feature(feature.BORDERS, zorder=2, color='k')
+> ax.add_feature(feature.LAKES, zorder=3, color='#1F2A38')
+> ax.coastlines(zorder=3, color='k')
+> 
+> # Add gridlines
+> ax.gridlines()
+> 
+> # Add colorbar
+> cbar = plt.colorbar(cs,shrink=0.7,orientation='horizontal',label='Surface Air Temperature (K)')
+> 
+> # Add title
+> plt.title('NCAR-CCSM4 RCP4.5 2100-2299')
+> ;
+> ~~~
+{: .source}
+
+![Screendump of plot with geographic features added](../fig/examples_cartopy_masking.jpg)
 
 
 > ## Good code editing habits
