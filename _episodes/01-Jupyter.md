@@ -20,44 +20,6 @@ Combined with `matplotlib` it works well for making contour plots of maps for Cl
 
 This lesson will demonstrate how to make contour plots using `cartopy`.
 
-### Some setup is required...
-
-`cartopy` uses a couple of C libraries that need to be imported as modules:
-* GEOS, which is a library for computational geometry with a focus on algorithms used in geographic information systems (GIS) software.
-* PROJ, which is a generic coordinate transformation software that transforms geospatial coordinates from one coordinate reference system (CRS) to another.
-
-On Hopper, you will also need to load a more up-to-date version of C compiler and version 3.9 of Python to install `cartopy` correctly. 
-From a Hopper desktop session, open a terminal window and load these modules in order:
-
-~~~
-$ module load gnu10
-$ module load python
-$ module load geos proj
-~~~
-{: language-.bash}
-
-Unfortunately, there is not currently a way for an interactive JupyterLab session launced from OOD to perceived these loaded modules, even if you have them in your .bashrc file. But we can get around that problem by launching a JupyterLab session directly from our Hopper Desktop and using the browser on the Hopper Desktop for our Jupyter session.
-
-From the same terminal as above, type:
-
-~~~
-$ jupyter lab
-~~~
-{: .language-bash}
-
-Your browser will launch and a Jupyter session will start that looks like the sessions that start in your laptop's browser. 
-Because you loaded the modules above, `cartopy` and its various functions will be available to install as a `Python` library.
-
-> ## Why this rigamarole?
->
-> At this time, using `pip install cartopy` will not work as an alternative, because it will not mate properly 
-> with the `geos` and `proj` libraries.
-> 
-> Geoinformation software is notoriously finicky on any platform, and Python is no exception. 
-> If you have ever used GIS software, you know that the code is often difficult to use, slow, or prone to crash.
-> There seems to be a tradeoff between versatility and performance that has not yet been solved in this sector.
-> 
-{: .callout}
 
 ## Plotting Gridded Data
 
@@ -67,20 +29,7 @@ The data are located in the following directory on Hopper: `/home/pdirmeye/class
 
 The filename is: `tas_Amon_CCSM4_rcp45_r1i1p1_210101-229912.nc`
 
-First, we need to do a `pip install` of a Python library that can handle the
-decoding the time units and variable values in a netCDF file conforming to the Climate and Forecasting (CF) netCDF convention, 
-which is widely used in weather and climate modeling.
 In a new Jupyter notebook (call it `cartopy_test.ipynb`) type into the code cell:
-
-> ~~~
-> pip install cftime
-> ~~~
-
-Yes, `pip install` works from inside a Python notebook too! It is now available to you here and anywhere else you run Python on Hopper.
-
-You will need to *restart your kernel* for the installation to take effect.
-Then, let's import the Python libraries we need. 
-In the same cell, replace the `pip` line with these lines:
 
 > ~~~
 > import numpy as np
@@ -103,7 +52,7 @@ In a new code cell, type:
 > path = '/home/pdirmeye/classes/clim680_2022/cartopy_data/'
 > fname = 'tas_Amon_CCSM4_rcp45_r1i1p1_210101-229912.nc'
 > ds = xr.open_dataset(path+fname)
-ds
+> ds
 > ~~~
 {: .source}
 
@@ -198,9 +147,10 @@ Then type: `c` `v` -- it will copy the cell and paste the copy below it).
 
 ![Screendump of nicer plot with coastlines](../fig/examples_cartopy-tutorial_16_0.png)
 
+
 The colors are not very nice for plotting temperature contours. 
 Let’s choose a different colormap and add a colorbar. 
-The [colormap options] [https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html](https://matplotlib.org/stable/gallery/color/colormap_reference.html){:target="_blank" rel="noopener"} 
+The [colormap options](https://matplotlib.org/stable/gallery/color/colormap_reference.html){:target="_blank" rel="noopener"} 
 come from `matplotlib`. 
 We will choose one called **coolwarm**
 
@@ -246,6 +196,7 @@ What if we want to use a different map projection?
 There are many 
 [map projections](https://scitools.org.uk/cartopy/docs/latest/reference/projections.html){:target="_blank" rel="noopener"}
 available.
+Let's use the Robinson projection. We'll also give the plot a title and label the colorbar:
 
 > ~~~
 > # Make the figure larger
@@ -290,13 +241,18 @@ available.
 > You should never change working code unless you are replacing it with newer working code.
 > If you have cell in a Jupyter notebook that does what you want, but you wish to improve it, 
 > make a copy of the cell and work on the copy until you get it as you want it.
+> Then, delete the old cell.
+> 
 > Likewise for an entire working notebook, script or program.
 > Copy the file and work on the copy. 
 > When you have a new and improved version, replace the original, or just give it a newer version number.
 > This version numbering approach is at the heart of robust code maintenance practices.
-> Combined with clear and complete documentation, these practices will 
+> Combined with clear and complete documentation
+> (inline comments in your code, and good use of markdown cells to describe your cells), 
+> these practices will 
 > cost you a little extra time now, but save you a lot of time later.
->
+> 
+> A good philosophy is:
 > 1. Write all your code as if other people will read it.
 > 2. Write all your code like your future self will depend on it!
 > 
