@@ -99,3 +99,6 @@ The Ubuntu font can be downloaded for free from:
 Don't let the above guidelines discourage you. If needed, submit your contribution "as is" and
 mention which steps you skipped. Maintainers will happily help -- make sure they can commit to the
 branch you use to submit your contribution.
+
+## Maintainer
+* Luis Ortiz
