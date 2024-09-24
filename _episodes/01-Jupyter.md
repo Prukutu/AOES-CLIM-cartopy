@@ -25,7 +25,7 @@ This lesson will demonstrate how to make contour plots using `cartopy`.
 
 We will use CMIP5 data for surface air temperature (tas) from the RCP8.5 scenario produced by the NCAR/CCSM4 model. For this example, we will use only the first ensemble member.
 
-The data are located in the following directory on Hopper: `/home/pdirmeye/classes/clim680_2022/cartopy_data/`
+The data are located in the following directory on Hopper: `/home/lortizur/clim680/cartopy_data/`
 
 The filename is: `tas_Amon_CCSM4_rcp45_r1i1p1_210101-229912.nc`
 
@@ -50,7 +50,7 @@ you do <u>not</u> need to copy it to your directory. Instead, we will give the p
 In a new code cell, type:
 
 > ~~~
-> path = '/home/pdirmeye/classes/clim680_2022/cartopy_data/'
+> path = '/home/lortizur/clim680/cartopy_data/'
 > fname = 'tas_Amon_CCSM4_rcp45_r1i1p1_210101-229912.nc'
 > ds = xr.open_dataset(path+fname)
 > ds
